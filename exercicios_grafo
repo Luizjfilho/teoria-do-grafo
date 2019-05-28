@@ -1,0 +1,72 @@
+class Petri:
+    def __init__(self, dic=None):
+        if dic is None:
+            dic = []
+        self.dic = dic
+
+    def listarVertices(self):
+        return list(self.dic)
+
+    def listarArestas(self):
+       return list(self.dic.values()) #listar AS chaves
+
+    def addVertice(self, vertice):
+        if vertice not in self.dic:
+            self.dic[vertice] = []
+
+    def addAresta(self, vertice, aresta):
+        array = self.dic.get(vertice)
+        array.append(aresta)
+        self.dic[vertice] = array
+
+    def removerVertice(self, vertice):
+        if vertice in self.dic:
+            self.dic.pop(vertice)
+        for i in self.dic:
+            if i == vertice: # SE EXISTIR ARESTA INFORMADA
+                vertice.remove(i) #REMOVER
+
+
+    def removerAresta(self, vertice, aresta): #ADCIONE O VERTICE E A ARESTA A SER REMOVIDA
+        array = self.dic.get(vertice) #ARRAY ATRIBUIDO AO DICIONARIO AS ARESTAS PEGADO NO VERTICE INDICADO
+        for i in array:
+            if i == aresta: # SE EXISTIR ARESTA INFORMADA
+                array.remove(i) #REMOVER
+
+def removerVerticeTudo(self,vertice):
+
+        if vertice in self.dic:
+            self.dic.pop(vertice)
+        for i in self.dic:
+            if i == vertice: # SE EXISTIR ARESTA INFORMADA
+                vertice.remove(i) #REMOVER
+
+        for i in self.dic:
+            array = self.dic.get(i)
+            for j in array:
+                if j == vertice:
+                    array.remove(vertice)
+
+
+
+
+dicionario = {'Q': ['V', 'W'],
+              'V': [],
+              'R': ['Q', 'V', 'X'],
+              'W': ['V', 'X'],
+              'S': ['R', 'T'],
+              'X': ['Y'],
+              'T': ['X'],
+              'Y': ['U', 'Z'],
+              'Z': ['T', 'U']}
+
+p = Petri(dicionario)
+print(dicionario)
+
+#p.removerVertice('Q')
+p.removerVerticeTudo('X')
+
+#print(p.listarVertices())
+print(dicionario)
+#print(p.listarArestas())
+
